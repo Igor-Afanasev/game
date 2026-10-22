@@ -63,3 +63,5 @@ window.addEventListener('keydown',e=>{if(map[e.code]){e.preventDefault();keys[ma
 window.addEventListener('keyup',e=>{if(map[e.code]){e.preventDefault();keys[map[e.code]]=false;}});window.addEventListener('blur',()=>{if(state==='playing')pause();});
 document.querySelectorAll('[data-key]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys[b.dataset.key]=true;});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>keys[b.dataset.key]=false);});
 document.querySelector('#attack').onclick=attack;document.querySelector('#interact').onclick=interact;document.querySelector('#restart').onclick=start;document.querySelector('#play').onclick=()=>{if(state==='dialog'||state==='paused'){state='playing';overlay.hidden=true;}else start();};reset();requestAnimationFrame(frame);
+
+const bootWarning=document.querySelector('#boot-warning');if(bootWarning)bootWarning.hidden=true;
